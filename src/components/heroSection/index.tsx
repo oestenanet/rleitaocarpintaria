@@ -1,135 +1,76 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
-
-const HeroContainer = styled.section`
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-`;
-
-const BackgroundMedia = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`;
-
-const BackgroundVideo = styled.video<{ isVisible: boolean }>`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: ${({ isVisible }) => (isVisible ? "block" : "none")};
-`;
-
-const FallbackImage = styled.img<{ isVisible: boolean }>`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: ${({ isVisible }) => (isVisible ? "block" : "none")};
-`;
-
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  padding: 0 16px; // ← esta linha adiciona espaçamento lateral
-  box-sizing: border-box; // ← importante para garantir que padding não estoura o layout
-`;
-
-const Title = styled(motion.h1)`
-  font-size: 3rem;
-  margin-bottom: 20px;
-`;
-
-const Subtitle = styled(motion.p)`
-  font-size: 1.5rem;
-  margin-bottom: 30px;
-`;
-
-const CTAButton = styled(motion.a)`
-  background-color: #00ffaa;
-  color: #000;
-  padding: 15px 30px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  &:hover {
-    background-color: #00cc88;
-  }
-`;
+import React from "react";
+import { Box, Typography, Button } from "@mui/material";
 
 const HeroSection: React.FC = () => {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setVideoLoaded(true);
-    }, 5000);
-  }, []);
-
   return (
-    <HeroContainer>
-      <BackgroundMedia>
-        <BackgroundVideo
-          isVisible={videoLoaded}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none" // ou "none" para não pré-carregar
-          poster="/pexels-andres-figueroa-3326883-32046545.png"
-          onCanPlayThrough={() => setVideoLoaded(true)}
-        >
-          <source
-            src="https://mf7n7up5egdpkbzf.public.blob.vercel-storage.com/13650374_3840_2160_30fps-biaLNDvanJvqiioUvNYZmAj3eTFqj1.mp4"
-            type="video/mp4"
-          />
-        </BackgroundVideo>
-        <FallbackImage
-          isVisible={!videoLoaded}
-          src="/pexels-andres-figueroa-3326883-32046545.jpg"
-          alt="Imagem de fundo"
+    <Box
+      sx={{
+        position: "relative",
+        height: "100vh",
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#fff",
+        textAlign: "center",
+      }}
+    >
+      {/* Vídeo de fundo */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+        }}
+      >
+        <source
+          src="https://player.vimeo.com/external/7492602.sd.mp4"
+          type="video/mp4"
         />
-      </BackgroundMedia>
-      <Overlay>
-        <Title
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+        O seu navegador não suporta vídeos HTML5.
+      </video>
+
+      {/* Sobreposição escura para melhor legibilidade */}
+      <Box
+        sx={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Conteúdo da hero section */}
+      <Box sx={{ zIndex: 1, px: 2 }}>
+        <Typography variant="h2" component="h1" gutterBottom>
+          Transformamos madeira em arte para o seu lar.
+        </Typography>
+        <Typography variant="h5" component="p" gutterBottom>
+          Projetos personalizados de carpintaria que refletem o seu estilo.
+        </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{ mt: 4 }}
+          onClick={() => {
+            const element = document.getElementById("servicos");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
         >
-          Transformamos Ideias em Soluções Digitais
-        </Title>
-        <Subtitle
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          Desenvolvimento de websites e gestão de redes sociais para impulsionar
-          o teu negócio.
-        </Subtitle>
-        <CTAButton
-          target="_blank"
-          href="https://api.whatsapp.com/send/?phone=%2B351932141109&text&type=phone_number&app_absent=0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-        >
-          Fala Connosco
-        </CTAButton>
-      </Overlay>
-    </HeroContainer>
+          Ver Serviços
+        </Button>
+      </Box>
+    </Box>
   );
 };
 

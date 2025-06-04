@@ -1,9 +1,6 @@
 // src/pages/Home.jsx
 import { Box } from "@mui/material";
 import HeroSection from "../../components/heroSection";
-import { ServicesSection } from "./shards/servicesSections";
-import { CTASection } from "./shards/ctaSection";
-import CEOSection from "./shards/ceoSection";
 import { useState } from "react";
 import Loader from "../../components/loader";
 
@@ -16,9 +13,9 @@ const Home = () => {
       ) : (
         <Box>
           <HeroSection />
-          <ServicesSection />
+          {/* <ServicesSection />
           <CEOSection />
-          <CTASection />
+          <CTASection /> */}
         </Box>
       )}
     </>

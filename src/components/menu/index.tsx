@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-            Carpintaria
+            Carpintarias Rui Leitão
           </Typography>
 
           {isMobile ? (

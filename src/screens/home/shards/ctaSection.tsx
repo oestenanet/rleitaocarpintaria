@@ -22,7 +22,7 @@ export const CTASection = () => (
       variant="contained"
       size="large"
       target="_blank"
-      href="https://api.whatsapp.com/send/?phone=%2B351932141109&text&type=phone_number&app_absent=0"
+      href="https://api.whatsapp.com/send/?phone=%2B351915308156&text&type=phone_number&app_absent=0"
       sx={{
         backgroundColor: "#000",
         color: "#00ffaa",

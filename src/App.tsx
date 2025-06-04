@@ -25,7 +25,7 @@ function App() {
         </Routes>
       </div>
       <Footer />
-      <FloatingButtons />
+      {/* <FloatingButtons /> */}
     </div>
   );
 }
