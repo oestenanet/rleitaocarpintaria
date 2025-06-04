@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/menu";
 import Home from "./screens/home";
-import Footer from "./components/footer";
 import FloatingButtons from "./components/floatingButtons";
 import ServicesPage from "./screens/services";
 import { ContactSection } from "./screens/contact";
@@ -24,8 +23,8 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
-      <Footer />
-      {/* <FloatingButtons /> */}
+      {/* <Footer /> */}
+      <FloatingButtons />
     </div>
   );
 }
