@@ -50,19 +50,29 @@ const Navbar: React.FC = () => {
           color: "black",
           boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
           zIndex: 1100,
+          height: 80,
+          justifyContent: "center",
         }}
       >
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-            Carpintarias Rui Leitão
-          </Typography>
+        <Toolbar sx={{ justifyContent: "space-between", height: "100%" }}>
+          {/* Logótipo + nome */}
+          <Box display="flex" alignItems="center">
+            <img
+              src="https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/Design%20sem%20nome-ezkCEMRtGHbhhWt7Ezr1e7Nvy8AULS.png"
+              alt="Logo"
+              style={{ height: 50, marginRight: 12 }}
+            />
+            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+              Carpintarias Rui Leitão
+            </Typography>
+          </Box>
 
           {isMobile ? (
             <IconButton edge="end" onClick={handleDrawerToggle}>
               <MenuIcon />
             </IconButton>
           ) : (
-            <Box>
+            <Box display="flex" alignItems="center">
               {sections.map((section) => (
                 <Button
                   key={section.id}
@@ -80,12 +90,27 @@ const Navbar: React.FC = () => {
                   {section.label}
                 </Button>
               ))}
+              <Button
+                variant="contained"
+                sx={{
+                  ml: 2,
+                  backgroundColor: "#a57242",
+                  color: "white",
+                  textTransform: "none",
+                  "&:hover": {
+                    backgroundColor: "#8b5e36",
+                  },
+                }}
+                onClick={() => scrollToSection("contactos")}
+              >
+                Fala connosco
+              </Button>
             </Box>
           )}
         </Toolbar>
       </AppBar>
 
-      {/* Drawer lateral */}
+      {/* Drawer mobile */}
       <Drawer
         anchor="left"
         open={drawerOpen}
@@ -100,6 +125,20 @@ const Navbar: React.FC = () => {
               </ListItemButton>
             </ListItem>
           ))}
+          <ListItem disablePadding>
+            <ListItemButton
+              onClick={() => handleItemClick("contactos")}
+              sx={{ mt: 2 }}
+            >
+              <ListItemText
+                primary="Fala connosco"
+                primaryTypographyProps={{
+                  fontWeight: "bold",
+                  color: "#a57242",
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
     </>
