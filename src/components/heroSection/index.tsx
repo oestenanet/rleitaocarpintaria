@@ -1,7 +1,10 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, useTheme } from "@mui/material";
+import { motion } from "framer-motion";
 
 const HeroSection: React.FC = () => {
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
@@ -11,64 +14,101 @@ const HeroSection: React.FC = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        color: "#fff",
         textAlign: "center",
+        backgroundImage:
+          "url('https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1108-mK5KIilCLmc3j2GvQcWVdeo2UpNvzf.JPG')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+        color: "#fff",
       }}
     >
-      {/* Vídeo de fundo */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: -1,
-        }}
-      >
-        <source
-          src="https://player.vimeo.com/external/7492602.sd.mp4"
-          type="video/mp4"
-        />
-        O seu navegador não suporta vídeos HTML5.
-      </video>
-
-      {/* Sobreposição escura para melhor legibilidade */}
+      {/* Overlay escura com gradiente */}
       <Box
         sx={{
           position: "absolute",
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          background:
+            "linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.85))",
           zIndex: 0,
         }}
       />
 
-      {/* Conteúdo da hero section */}
-      <Box sx={{ zIndex: 1, px: 2 }}>
-        <Typography variant="h2" component="h1" gutterBottom>
-          Transformamos madeira em arte para o seu lar.
-        </Typography>
-        <Typography variant="h5" component="p" gutterBottom>
-          Projetos personalizados de carpintaria que refletem o seu estilo.
-        </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          sx={{ mt: 4 }}
-          onClick={() => {
-            const element = document.getElementById("servicos");
-            if (element) {
-              element.scrollIntoView({ behavior: "smooth" });
-            }
-          }}
+      {/* Conteúdo com animações */}
+      <Box sx={{ zIndex: 1, px: 3, maxWidth: "800px" }}>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
         >
-          Ver Serviços
-        </Button>
+          <Typography
+            variant="h2"
+            component="h1"
+            gutterBottom
+            sx={{
+              fontWeight: "bold",
+              fontSize: {
+                xs: "2rem",
+                sm: "2.5rem",
+                md: "3.5rem",
+              },
+            }}
+          >
+            A madeira com alma e propósito.
+          </Typography>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 1 }}
+        >
+          <Typography
+            variant="h6"
+            component="p"
+            sx={{
+              maxWidth: 600,
+              margin: "0 auto",
+              color: theme.palette.grey[300],
+              fontStyle: "italic",
+            }}
+            gutterBottom
+          >
+            Design sob medida para cozinhas, roupeiros e portas que contam a sua
+            história.
+          </Typography>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 1 }}
+        >
+          <Button
+            variant="contained"
+            size="large"
+            sx={{
+              mt: 4,
+              px: 4,
+              py: 1.5,
+              fontWeight: 600,
+              fontSize: "1rem",
+              backgroundColor: "#a57242",
+              color: "#fff",
+              textTransform: "none",
+              "&:hover": {
+                backgroundColor: "#8b5e36",
+              },
+            }}
+            onClick={() => {
+              const el = document.getElementById("servicos");
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Ver Serviços
+          </Button>
+        </motion.div>
       </Box>
     </Box>
   );
