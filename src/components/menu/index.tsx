@@ -17,6 +17,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 
 const sections = [
+  { label: "Sobre Nós", id: "sobre" },
   { label: "Serviços", id: "servicos" },
   { label: "Portfólio", id: "portfolio" },
   { label: "Contactos", id: "contactos" },

@@ -1,124 +1,116 @@
-// src/pages/ServicesPage.jsx
-import { Box, Typography, Card, CardContent, Grid } from "@mui/material";
-import { Code, PhoneIphone, Settings } from "@mui/icons-material";
-import { motion } from "framer-motion";
-import { CTASection } from "../home/shards/ctaSection";
+import React from "react";
+import {
+  Box,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+} from "@mui/material";
+import KitchenIcon from "@mui/icons-material/Kitchen";
+import DoorFrontIcon from "@mui/icons-material/DoorFront";
+import CheckroomIcon from "@mui/icons-material/Checkroom";
 
-const services = [
+const servicos = [
   {
-    icon: <Code fontSize="large" sx={{ color: "#00ffaa" }} />,
-    title: "Desenvolvimento Web",
-    description:
-      "Criamos websites modernos, landing pages, sistemas personalizados e aplicações web progressivas (PWA). Tudo com foco em performance, UX e presença digital de alto impacto.",
+    titulo: "Cozinhas",
+    descricao:
+      "Desenhamos e construímos cozinhas por medida, funcionais e esteticamente marcantes. Utilizamos materiais de alta qualidade e trabalhamos cada detalhe para criar espaços únicos, confortáveis e adaptados ao seu dia a dia.",
+    icon: <KitchenIcon sx={{ fontSize: 60, color: "#f2c17d" }} />,
   },
   {
-    icon: <PhoneIphone fontSize="large" sx={{ color: "#00ffaa" }} />,
-    title: "Gestão de Redes & SEO",
-    description:
-      "Impulsionamos a sua marca com estratégias de redes sociais, anúncios (Meta Ads, Google) e SEO técnico para maximizar visibilidade e atrair mais clientes organicamente.",
+    titulo: "Roupeiros",
+    descricao:
+      "Criamos roupeiros embutidos ou modulares, sempre com foco na organização e aproveitamento de espaço. Personalize com portas de correr, interiores ajustáveis e acabamentos à sua medida. Funcionalidade com elegância.",
+    icon: <CheckroomIcon sx={{ fontSize: 60, color: "#f2c17d" }} />,
   },
   {
-    icon: <Settings fontSize="large" sx={{ color: "#00ffaa" }} />,
-    title: "Transformação Digital",
-    description:
-      "Ajudamos empresas a evoluírem com automações, ferramentas personalizadas e metodologias ágeis como SCRUM. Reduza custos, melhore processos e inove com tecnologia.",
+    titulo: "Portas",
+    descricao:
+      "Produzimos portas interiores e exteriores em madeira maciça ou folheada, com acabamento artesanal. Oferecemos soluções seguras, duradouras e visualmente harmoniosas com o restante ambiente da sua casa.",
+    icon: <DoorFrontIcon sx={{ fontSize: 60, color: "#f2c17d" }} />,
   },
 ];
 
-const cardVariant = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.2, duration: 0.6 },
-  }),
+const scrollToContactos = () => {
+  const el = document.getElementById("contactos");
+  if (el) el.scrollIntoView({ behavior: "smooth" });
 };
 
-const ServicesPage = () => {
+const ServicesPage: React.FC = () => {
   return (
-    <Box>
-      <Box sx={{ position: "relative", height: "350px", overflow: "hidden" }}>
-        <img
-          src="https://mf7n7up5egdpkbzf.public.blob.vercel-storage.com/pexels-divinetechygirl-1181675-4oQJdIgcPYLg7zIk24q4ajfgPLFZHI.jpg"
-          alt="Imagem de fundo"
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
-        {/* Overlay suave */}
-        <Box
+    <Box
+      id="servicos"
+      sx={{
+        bgcolor: "#2c1b0c",
+        color: "white",
+        py: 10,
+        px: 3,
+        textAlign: "center",
+      }}
+    >
+      <Typography variant="h4" fontWeight="bold" gutterBottom>
+        Os nossos serviços
+      </Typography>
+      <Typography
+        variant="subtitle1"
+        sx={{ mb: 6, maxWidth: 700, mx: "auto", color: "#ddd" }}
+      >
+        Transformamos madeira em soluções únicas para o seu espaço. Conheça o
+        que podemos criar para si.
+      </Typography>
+
+      <Grid container spacing={4} justifyContent="center">
+        {servicos.map((servico, index) => (
+          <Grid size={{ xs: 12, md: 4 }} key={index}>
+            <Card
+              sx={{
+                bgcolor: "#3a2614",
+                color: "white",
+                height: "100%",
+                transition: "transform 0.3s, box-shadow 0.3s",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+                },
+              }}
+              elevation={4}
+            >
+              <CardContent sx={{ textAlign: "center", p: 4 }}>
+                <Box mb={2}>{servico.icon}</Box>
+                <Typography variant="h6" fontWeight="bold" gutterBottom>
+                  {servico.titulo}
+                </Typography>
+                <Typography variant="body2" sx={{ color: "#ccc" }}>
+                  {servico.descricao}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
+      {/* Botão fale connosco */}
+      <Box mt={8}>
+        <Button
+          variant="contained"
+          size="large"
           sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background:
-              "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6))",
-            zIndex: 1,
+            bgcolor: "#a57242",
+            color: "white",
+            textTransform: "none",
+            fontWeight: "bold",
+            px: 4,
+            py: 1.5,
+            "&:hover": {
+              bgcolor: "#8d5c33",
+            },
           }}
-        />
-      </Box>
-
-      <Box sx={{ backgroundColor: "#0d0d0d", color: "#fff", py: 6, px: 4 }}>
-        <Typography variant="h3" align="center" fontWeight="bold" mb={4}>
-          Os nossos <span style={{ color: "#00ffaa" }}>Serviços</span>
-        </Typography>
-
-        <Typography
-          variant="h6"
-          align="center"
-          mb={6}
-          sx={{ maxWidth: 800, mx: "auto", color: "#aaa" }}
+          onClick={scrollToContactos}
         >
-          Soluções digitais completas para negócios ambiciosos. Entregamos
-          inovação com qualidade, rapidez e uma abordagem orientada a
-          resultados.
-        </Typography>
-
-        <Grid container spacing={4} justifyContent="center">
-          {services.map((service, i) => (
-            <Grid key={i} size={{ xs: 12, sm: 6, md: 4 }}>
-              <motion.div
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={cardVariant}
-              >
-                <Card
-                  sx={{
-                    backgroundColor: "#1a1a1a",
-                    borderRadius: "20px",
-                    p: 3,
-                    height: "100%",
-                    boxShadow: "0 0 20px rgba(0,255,170,0.1)",
-                    transition: "transform 0.3s",
-                    "&:hover": {
-                      transform: "translateY(-8px)",
-                      boxShadow: "0 0 30px rgba(0,255,170,0.3)",
-                    },
-                  }}
-                >
-                  <CardContent>
-                    <Box mb={2}>{service.icon}</Box>
-                    <Typography
-                      color="white"
-                      variant="h6"
-                      fontWeight={600}
-                      mb={1}
-                    >
-                      {service.title}
-                    </Typography>
-                    <Typography variant="body2" color="#ccc">
-                      {service.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
+          Fale connosco
+        </Button>
       </Box>
-      <CTASection />
     </Box>
   );
 };
