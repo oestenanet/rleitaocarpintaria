@@ -27,7 +27,7 @@ const servicos = [
   {
     titulo: "Portas",
     descricao:
-      "Produzimos portas interiores e exteriores em madeira maciça ou folheada, com acabamento artesanal. Oferecemos soluções seguras, duradouras e visualmente harmoniosas com o restante ambiente da sua casa.",
+      "Produzimos portas interiores. Oferecemos soluções seguras, duradouras e visualmente harmoniosas com o restante ambiente da sua casa.",
     icon: <DoorFrontIcon sx={{ fontSize: 60, color: "#f2c17d" }} />,
   },
 ];

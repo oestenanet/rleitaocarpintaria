@@ -23,7 +23,7 @@ const ContactSection: React.FC = () => {
         viewport={{ once: true }}
       >
         <Typography variant="h4" fontWeight="bold" textAlign="center" mb={4}>
-          Contacte-nos
+          Contactos
         </Typography>
       </motion.div>
 
@@ -45,7 +45,7 @@ const ContactSection: React.FC = () => {
           >
             <Typography variant="h6" gutterBottom>
               <RoomIcon sx={{ verticalAlign: "middle", mr: 1 }} />
-              Zona Centro, Portugal
+              Caldas da Rainha, Portugal
             </Typography>
             <Typography variant="h6" gutterBottom>
               <PhoneIcon sx={{ verticalAlign: "middle", mr: 1 }} />
@@ -53,16 +53,16 @@ const ContactSection: React.FC = () => {
                 href="tel:+351912345678"
                 sx={{ color: "#fff", textDecoration: "none" }}
               >
-                +351 912 345 678
+                +351 915 308 156
               </Link>
             </Typography>
             <Typography variant="h6" gutterBottom>
               <EmailIcon sx={{ verticalAlign: "middle", mr: 1 }} />
               <Link
-                href="mailto:geral@carpintariasrleitao.pt"
+                href="mailto:rmcleitao@gmail.com"
                 sx={{ color: "#fff", textDecoration: "none" }}
               >
-                geral@carpintariasrleitao.pt
+                rmcleitao@gmail.com
               </Link>
             </Typography>
             <Typography variant="body1" sx={{ mt: 4, color: "#d4c3b8" }}>
@@ -72,7 +72,7 @@ const ContactSection: React.FC = () => {
             <Button
               variant="outlined"
               size="large"
-              href="https://wa.me/351910000000?text=Olá!%20Gostaria%20de%20falar%20sobre%20um%20projeto%20de%20carpintaria."
+              href="https://api.whatsapp.com/send/?phone=%2B351915308156&text&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
               sx={{

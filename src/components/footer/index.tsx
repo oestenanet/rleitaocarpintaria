@@ -29,12 +29,19 @@ const Footer: React.FC = () => {
           Carpintarias Rui Leitão
         </Typography>
         <Typography variant="body2" color="gray" mb={2}>
-          Zona Centro, Portugal —{" "}
+          Caldas da Rainha, Portugal{" | "}
           <Link
-            href="mailto:geral@carpintariasrleitao.pt"
+            href="tel:+351912345678"
             sx={{ color: "#d4c3b8", textDecoration: "none" }}
           >
-            geral@carpintariasrleitao.pt
+            +351 915 308 156
+          </Link>
+          {" | "}
+          <Link
+            href="rmcleitao@gmail.com"
+            sx={{ color: "#d4c3b8", textDecoration: "none" }}
+          >
+            rmcleitao@gmail.com
           </Link>
         </Typography>
 
@@ -57,21 +64,11 @@ const Footer: React.FC = () => {
             </IconButton>
           </motion.div>
 
-          <motion.div whileHover={{ scale: 1.2 }}>
-            <IconButton
-              component="a"
-              href="mailto:geral@carpintariasrleitao.pt"
-              sx={{ color: "#d4c3b8" }}
-            >
-              <EmailIcon />
-            </IconButton>
-          </motion.div>
-
           {/* Facebook opcional */}
           <motion.div whileHover={{ scale: 1.2 }}>
             <IconButton
               component="a"
-              href="https://facebook.com"
+              href="https://www.facebook.com/carpintariasruileitao"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ color: "#d4c3b8" }}
@@ -87,7 +84,7 @@ const Footer: React.FC = () => {
           <br />
           Desenvolvido por{" "}
           <Link
-            href="https://etronicdigitals.com"
+            href="https://etronicdigitals.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             sx={{

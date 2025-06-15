@@ -12,7 +12,7 @@ const FloatingButtons: React.FC = () => {
         gap: "10px",
         position: "fixed",
         bottom: "20px",
-        right: "40px",
+        right: "20px",
         zIndex: 10000,
       }}
     >
