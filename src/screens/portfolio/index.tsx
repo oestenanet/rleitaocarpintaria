@@ -1,14 +1,32 @@
-import React from "react";
-import { Box, Typography, Grid, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, Grid, Button, Dialog } from "@mui/material";
 import { motion } from "framer-motion";
 
 const images = [
   "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1109-Uc5S6OUP0gjbPYMkXfHMzQe3iWnuvf.JPG",
   "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1122-uut8yLRaKKgKAmEIdY6BrafTCM4Boc.JPG",
   "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1105-toKF9HBwokpWeXYDav4vo9ZFcsuyBr.JPG",
+  "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1034-XXfnzcWhb4WH25tku25xb9vu0HCBha.JPG",
+  "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1040-fatcpTFgaXI7my4TxLiUzC8MB6uwPM.JPG",
+  "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1057-YGBAPQyJ7dypp8m5BsYZHK89xIHUiS.JPG",
+  "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1080-L548rwhk2fUvmH3VEYeimHfZrI7GT7.JPG",
+  "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1081-7OGQSLx5IzdU51q2SZAi5guk6woIw0.JPG",
 ];
 
 const Portfolio: React.FC = () => {
+  const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const handleOpen = (src: string) => {
+    setSelectedImage(src);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedImage(null);
+  };
+
   return (
     <Box
       id="portfolio"
@@ -49,7 +67,9 @@ const Portfolio: React.FC = () => {
                 borderRadius: "16px",
                 boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
                 backgroundColor: "#fff",
+                cursor: "pointer",
               }}
+              onClick={() => handleOpen(src)}
             >
               <img
                 src={src}
@@ -86,6 +106,34 @@ const Portfolio: React.FC = () => {
           Ver mais
         </Button>
       </Box>
+
+      {/* Modal da Imagem */}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        maxWidth="md"
+        PaperProps={{
+          sx: {
+            bgcolor: "transparent",
+            boxShadow: "none",
+            p: 0,
+            display: "flex",
+            justifyContent: "center",
+          },
+        }}
+      >
+        <Box
+          component="img"
+          src={selectedImage ?? ""}
+          alt="Imagem ampliada"
+          sx={{
+            maxWidth: "90vw",
+            maxHeight: "90vh",
+            borderRadius: 2,
+            boxShadow: 4,
+          }}
+        />
+      </Dialog>
     </Box>
   );
 };

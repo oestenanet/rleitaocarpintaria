@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography, Link, IconButton, Stack } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import EmailIcon from "@mui/icons-material/Email";
 import { motion } from "framer-motion";
 
 const Footer: React.FC = () => {

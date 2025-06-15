@@ -115,7 +115,7 @@ const ContactSection: React.FC = () => {
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3123.573316759044!2d-8.630908684652812!3d40.64050587933715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd232dc1cf8fd9a7%3A0x8b300e385d0f53f!2sAveiro!5e0!3m2!1spt-PT!2spt!4v1717535630000!5m2!1spt-PT!2spt"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3167.123456789012!2d-9.140000000000000!3d39.405000000000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48d12f2a0c9f...!2sCaldas+da+Rainha!5e0!3m2!1spt-PT!2spt!4v0000000000000!5m2!1spt-PT!2spt"
               ></iframe>
             </Box>
           </motion.div>
