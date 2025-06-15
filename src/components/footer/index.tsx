@@ -1,100 +1,106 @@
-import {
-  Box,
-  Typography,
-  Container,
-  Divider,
-  IconButton,
-  Stack,
-} from "@mui/material";
+import React from "react";
+import { Box, Typography, Link, IconButton, Stack } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import EmailIcon from "@mui/icons-material/Email";
+import { motion } from "framer-motion";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#0d0d0d",
-        color: "#aaa",
-        pt: 8,
-        pb: 4,
+        bgcolor: "#0f0a05",
+        color: "#fff",
+        pt: 6,
+        pb: 3,
+        px: 3,
+        textAlign: "center",
       }}
     >
-      <Container maxWidth="lg">
-        {/* Top Section */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{ color: "#fff", fontWeight: "bold", mb: 1 }}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        {/* Nome e contacto */}
+        <Typography variant="h6" gutterBottom>
+          Carpintarias Rui Leitão
+        </Typography>
+        <Typography variant="body2" color="gray" mb={2}>
+          Zona Centro, Portugal —{" "}
+          <Link
+            href="mailto:geral@carpintariasrleitao.pt"
+            sx={{ color: "#d4c3b8", textDecoration: "none" }}
           >
-            Etronic Digitals
-          </Typography>
-          <Typography variant="body2" sx={{ maxWidth: 500, mb: 3 }}>
-            Criamos soluções digitais modernas para marcas visionárias. De
-            websites a sistemas, transformamos ideias em inovação.
-          </Typography>
+            geral@carpintariasrleitao.pt
+          </Link>
+        </Typography>
 
-          {/* Social Icons */}
-          <Stack
-            direction="row"
-            spacing={2}
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
+        {/* Redes sociais */}
+        <Stack
+          direction="row"
+          spacing={2}
+          justifyContent="center"
+          sx={{ mb: 3 }}
+        >
+          <motion.div whileHover={{ scale: 1.2 }}>
             <IconButton
-              href="https://www.instagram.com/etronicdigitals/"
+              component="a"
+              href="https://www.instagram.com/carpintariasrleitao/"
               target="_blank"
-              sx={{ color: "#aaa", "&:hover": { color: "#00ffaa" } }}
+              rel="noopener noreferrer"
+              sx={{ color: "#d4c3b8" }}
             >
               <InstagramIcon />
             </IconButton>
+          </motion.div>
+
+          <motion.div whileHover={{ scale: 1.2 }}>
             <IconButton
-              target="_blank"
-              href="https://api.whatsapp.com/send/?phone=%2B351915308156&text&type=phone_number&app_absent=0"
-              sx={{ color: "#aaa", "&:hover": { color: "#00ffaa" } }}
+              component="a"
+              href="mailto:geral@carpintariasrleitao.pt"
+              sx={{ color: "#d4c3b8" }}
             >
-              <Typography
-                variant="body2"
-                align="center"
-                sx={{ fontSize: "0.875rem" }}
-              >
-                +351 932 141 109
-              </Typography>
+              <EmailIcon />
             </IconButton>
-            <IconButton sx={{ color: "#aaa", "&:hover": { color: "#00ffaa" } }}>
-              <Typography
-                variant="body2"
-                align="center"
-                sx={{ fontSize: "0.875rem" }}
-              >
-                franciscovieirawork@hotmail.com
-              </Typography>
+          </motion.div>
+
+          {/* Facebook opcional */}
+          <motion.div whileHover={{ scale: 1.2 }}>
+            <IconButton
+              component="a"
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: "#d4c3b8" }}
+            >
+              <FacebookIcon />
             </IconButton>
-          </Stack>
-        </Box>
+          </motion.div>
+        </Stack>
 
-        {/* Divider */}
-        <Divider sx={{ backgroundColor: "#333", my: 4 }} />
-
-        {/* Bottom Section */}
-        <Typography
-          variant="body2"
-          align="center"
-          sx={{ fontSize: "0.875rem" }}
-        >
-          © {new Date().getFullYear()} Etronic Digitals. Todos os direitos
-          reservados.
+        {/* Créditos finais */}
+        <Typography variant="caption" sx={{ color: "#999" }}>
+          © {new Date().getFullYear()} Todos os direitos reservados.
+          <br />
+          Desenvolvido por{" "}
+          <Link
+            href="https://etronicdigitals.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              color: "#a57242",
+              textDecoration: "none",
+              fontWeight: 500,
+              "&:hover": { textDecoration: "underline" },
+            }}
+          >
+            Etronic Digitals
+          </Link>
         </Typography>
-      </Container>
+      </motion.div>
     </Box>
   );
 };

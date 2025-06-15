@@ -92,6 +92,8 @@ const Navbar: React.FC = () => {
                 </Button>
               ))}
               <Button
+                target="_blank"
+                href="https://api.whatsapp.com/send/?phone=%2B351915308156&text&type=phone_number&app_absent=0"
                 variant="contained"
                 sx={{
                   ml: 2,
@@ -104,7 +106,7 @@ const Navbar: React.FC = () => {
                 }}
                 onClick={() => scrollToSection("contactos")}
               >
-                Fala connosco
+                Fale connosco
               </Button>
             </Box>
           )}

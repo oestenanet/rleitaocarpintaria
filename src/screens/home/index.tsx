@@ -6,6 +6,8 @@ import Loader from "../../components/loader";
 import ServicesPage from "../services";
 import About from "../aboutUs";
 import Portfolio from "../portfolio";
+import ContactSection from "../contact";
+import Footer from "../../components/footer";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -19,9 +21,8 @@ const Home = () => {
           <About />
           <ServicesPage />
           <Portfolio />
-          {/* 
-          <CEOSection />
-          <CTASection /> */}
+          <ContactSection />
+          <Footer />
         </Box>
       )}
     </>

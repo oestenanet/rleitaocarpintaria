@@ -1,144 +1,128 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Box, TextField, Typography, Button, Grid } from "@mui/material";
-import { useState } from "react";
-import emailjs from "emailjs-com";
+import React from "react";
+import { Box, Grid, Typography, Link, Button } from "@mui/material";
 import { motion } from "framer-motion";
+import RoomIcon from "@mui/icons-material/Room";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
 
-export const ContactSection = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e: any) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const sendEmail = (e: any) => {
-    e.preventDefault();
-
-    emailjs
-      .send("service_9dt2rid", "template_s8ffbc6", form, "wkEL2zCPzGgtdWy9c")
-      .then(() => {
-        setSubmitted(true);
-        setForm({ name: "", email: "", message: "" });
-      })
-      .catch((err) => console.error("EmailJS error:", err));
-  };
-
+const ContactSection: React.FC = () => {
   return (
-    <Box>
-      <Box
-        sx={{
-          background: "linear-gradient(to right, #00ffaa, #0066ff)",
-          color: "#000",
-          textAlign: "center",
-          height: "104px",
-        }}
-      ></Box>
-      <Box sx={{ py: 10, px: 4, backgroundColor: "#0d0d0d", color: "#fff" }}>
-        <Grid container spacing={6} alignItems="center">
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Typography variant="h3" fontWeight="bold" gutterBottom>
-              Vamos trabalhar juntos
-            </Typography>
-            <Typography variant="body1" color="#ccc" mb={4}>
-              Estamos baseados na cidade de Caldas da Rainha, não tendo sede
-              fisica, há a possíbilidade de conhecer o cliente fisicamente, mas
-              tudo é feito remotamente. Sem complicações, sem deslocações.
-              Apenas resultados digitais reais.
-            </Typography>
-            <Typography variant="subtitle1" mb={1}>
-              📧 Email:{" "}
-              <span style={{ color: "#00ffaa" }}>
-                franciscovieirawork@hotmail.com
-              </span>
-            </Typography>
-            <Typography variant="subtitle1" mb={1}>
-              📍 Localização: 100% Digital / Remoto
-            </Typography>
-            <Typography variant="subtitle1">
-              📱 WhatsApp:{" "}
-              <span style={{ color: "#00ffaa" }}>+351 932 141 109</span>
-            </Typography>
-          </Grid>
+    <Box
+      id="contactos"
+      sx={{
+        bgcolor: "#1e1207",
+        color: "#fff",
+        py: 10,
+        px: { xs: 3, md: 6 },
+      }}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <Typography variant="h4" fontWeight="bold" textAlign="center" mb={4}>
+          Contacte-nos
+        </Typography>
+      </motion.div>
 
-          <Grid size={{ xs: 12, md: 6 }}>
-            {submitted ? (
-              <Typography color="#00ffaa" variant="h6">
-                ✅ Mensagem enviada com sucesso. Obrigado pelo contacto!
-              </Typography>
-            ) : (
-              <motion.form
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                onSubmit={sendEmail}
+      <Grid
+        container
+        spacing={6}
+        maxWidth="lg"
+        mx="auto"
+        alignItems="center"
+        justifyContent="center"
+      >
+        {/* Contact Info */}
+        <Grid size={{ xs: 12, md: 5 }}>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Typography variant="h6" gutterBottom>
+              <RoomIcon sx={{ verticalAlign: "middle", mr: 1 }} />
+              Zona Centro, Portugal
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              <PhoneIcon sx={{ verticalAlign: "middle", mr: 1 }} />
+              <Link
+                href="tel:+351912345678"
+                sx={{ color: "#fff", textDecoration: "none" }}
               >
-                <TextField
-                  fullWidth
-                  label="Nome"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  sx={{ mb: 3 }}
-                  variant="outlined"
-                  style={{ border: "1px solid white" }}
-                  InputLabelProps={{ style: { color: "#ccc" } }}
-                  InputProps={{ style: { color: "#fff" } }}
-                />
-                <TextField
-                  fullWidth
-                  label="Email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  sx={{ mb: 3 }}
-                  variant="outlined"
-                  style={{ border: "1px solid white" }}
-                  InputLabelProps={{ style: { color: "#ccc" } }}
-                  InputProps={{ style: { color: "#fff" } }}
-                />
-                <TextField
-                  fullWidth
-                  label="Mensagem"
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  multiline
-                  rows={4}
-                  sx={{ mb: 3 }}
-                  variant="outlined"
-                  style={{ border: "1px solid white" }}
-                  InputLabelProps={{ style: { color: "#ccc" } }}
-                  InputProps={{ style: { color: "#fff" } }}
-                />
-                <Button
-                  type="submit"
-                  variant="outlined"
-                  sx={{
-                    color: "#00ffaa",
-                    borderColor: "#00ffaa",
-                    "&:hover": {
-                      backgroundColor: "#00ffaa",
-                      color: "#000",
-                    },
-                  }}
-                >
-                  Enviar mensagem
-                </Button>
-              </motion.form>
-            )}
-          </Grid>
+                +351 912 345 678
+              </Link>
+            </Typography>
+            <Typography variant="h6" gutterBottom>
+              <EmailIcon sx={{ verticalAlign: "middle", mr: 1 }} />
+              <Link
+                href="mailto:geral@carpintariasrleitao.pt"
+                sx={{ color: "#fff", textDecoration: "none" }}
+              >
+                geral@carpintariasrleitao.pt
+              </Link>
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 4, color: "#d4c3b8" }}>
+              Estamos disponíveis para esclarecer dúvidas ou agendar uma visita
+              ao seu projeto.
+            </Typography>
+            <Button
+              variant="outlined"
+              size="large"
+              href="https://wa.me/351910000000?text=Olá!%20Gostaria%20de%20falar%20sobre%20um%20projeto%20de%20carpintaria."
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                mt: 2,
+                borderColor: "white",
+                color: "white",
+                "&:hover": {
+                  borderColor: "lightGrey",
+                  color: "lightGrey",
+                },
+              }}
+            >
+              Contacte-nos
+            </Button>
+          </motion.div>
         </Grid>
-      </Box>
-      <Box
-        sx={{
-          background: "linear-gradient(to right, #00ffaa, #0066ff)",
-          color: "#000",
-          textAlign: "center",
-          height: "40px",
-        }}
-      ></Box>
+
+        {/* Google Map Embed */}
+        <Grid size={{ xs: 12, md: 7 }}>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Box
+              sx={{
+                width: "100%",
+                height: { xs: 300, md: 400 },
+                borderRadius: 3,
+                overflow: "hidden",
+                boxShadow: 3,
+              }}
+            >
+              <iframe
+                title="Google Map"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3123.573316759044!2d-8.630908684652812!3d40.64050587933715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd232dc1cf8fd9a7%3A0x8b300e385d0f53f!2sAveiro!5e0!3m2!1spt-PT!2spt!4v1717535630000!5m2!1spt-PT!2spt"
+              ></iframe>
+            </Box>
+          </motion.div>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
+
+export default ContactSection;

@@ -1,34 +1,22 @@
 import React from "react";
-import Slider from "react-slick";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Grid, Button } from "@mui/material";
 import { motion } from "framer-motion";
 
 const images = [
-  "https://images.unsplash.com/photo-1600585152220-90363fe7e115", // cozinha
-  "https://images.unsplash.com/photo-1616627562166-9b6b7ffdf179", // armário
-  "https://images.unsplash.com/photo-1601979031925-18bdeff3a43e", // detalhe madeira
+  "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1109-Uc5S6OUP0gjbPYMkXfHMzQe3iWnuvf.JPG",
+  "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1122-uut8yLRaKKgKAmEIdY6BrafTCM4Boc.JPG",
+  "https://n5pyepg4aruaejgm.public.blob.vercel-storage.com/IMG_1105-toKF9HBwokpWeXYDav4vo9ZFcsuyBr.JPG",
 ];
 
 const Portfolio: React.FC = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    arrows: false,
-  };
-
   return (
     <Box
       id="portfolio"
       sx={{
-        bgcolor: "#1e1207",
-        color: "white",
+        bgcolor: "#f5f5f5",
+        color: "#1e1207",
         py: 10,
-        px: 3,
+        px: { xs: 2, md: 6 },
         textAlign: "center",
       }}
     >
@@ -38,53 +26,66 @@ const Portfolio: React.FC = () => {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <Typography variant="h4" fontWeight="bold" gutterBottom>
+        <Typography variant="h3" fontWeight="bold" gutterBottom>
           Portfólio
         </Typography>
-        <Typography variant="body1" sx={{ mb: 4, color: "#c1b1a1" }}>
-          Veja alguns dos nossos trabalhos recentes em cozinhas personalizadas.
+        <Typography
+          variant="h6"
+          sx={{ mb: 6, maxWidth: 700, mx: "auto", color: "#4d3a2a" }}
+        >
+          Projetos que refletem a nossa paixão pela carpintaria. Cada peça é
+          feita com rigor, detalhe e dedicação.
         </Typography>
       </motion.div>
 
-      <Box sx={{ maxWidth: 800, mx: "auto", mb: 6 }}>
-        <Slider {...settings}>
-          {images.map((src, i) => (
-            <Box
-              key={i}
-              sx={{
-                px: 2,
-                "& img": {
-                  width: "100%",
-                  borderRadius: 2,
-                  boxShadow: 3,
-                  height: { xs: 220, md: 400 },
-                  objectFit: "cover",
-                },
+      <Grid container spacing={4} justifyContent="center">
+        {images.map((src, i) => (
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={i}>
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              style={{
+                overflow: "hidden",
+                borderRadius: "16px",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.1)",
+                backgroundColor: "#fff",
               }}
             >
-              <img src={src} alt={`Projeto ${i + 1}`} />
-            </Box>
-          ))}
-        </Slider>
-      </Box>
+              <img
+                src={src}
+                alt={`Projeto ${i + 1}`}
+                style={{
+                  width: "100%",
+                  height: "260px",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </motion.div>
+          </Grid>
+        ))}
+      </Grid>
 
-      <Button
-        variant="outlined"
-        sx={{
-          borderColor: "#a57242",
-          color: "#a57242",
-          "&:hover": {
+      <Box mt={6}>
+        <Button
+          variant="contained"
+          size="large"
+          href="https://www.instagram.com/carpintariasrleitao/"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
             bgcolor: "#a57242",
             color: "#fff",
-          },
-        }}
-        size="large"
-        href="https://www.instagram.com/seu_instagram"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Ver mais no Instagram
-      </Button>
+            px: 4,
+            fontWeight: 600,
+            "&:hover": {
+              bgcolor: "#8d5f35",
+            },
+          }}
+        >
+          Ver mais
+        </Button>
+      </Box>
     </Box>
   );
 };
