@@ -55,7 +55,6 @@ const Portfolio: React.FC = () => {
           feita com rigor, detalhe e dedicação.
         </Typography>
       </motion.div>
-
       <Grid container spacing={4} justifyContent="center">
         {images.map((src, i) => (
           <Grid size={{ xs: 12, sm: 6, md: 4 }} key={i}>
@@ -85,7 +84,6 @@ const Portfolio: React.FC = () => {
           </Grid>
         ))}
       </Grid>
-
       <Box mt={6}>
         <Button
           variant="contained"
@@ -106,8 +104,8 @@ const Portfolio: React.FC = () => {
           Ver mais
         </Button>
       </Box>
-
       {/* Modal da Imagem */}
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -122,17 +120,19 @@ const Portfolio: React.FC = () => {
           },
         }}
       >
-        <Box
-          component="img"
-          src={selectedImage ?? ""}
-          alt="Imagem ampliada"
-          sx={{
-            maxWidth: "90vw",
-            maxHeight: "90vh",
-            borderRadius: 2,
-            boxShadow: 4,
-          }}
-        />
+        {selectedImage && (
+          <Box
+            component="img"
+            src={selectedImage}
+            alt="Imagem ampliada"
+            sx={{
+              maxWidth: "90vw",
+              maxHeight: "90vh",
+              borderRadius: 2,
+              boxShadow: 4,
+            }}
+          />
+        )}
       </Dialog>
     </Box>
   );
